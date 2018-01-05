@@ -432,4 +432,13 @@
         }
     })
         //, $("#top-author") < 0 && (a.location.href = "http://" + t.join(""))
+    var $dialog = $("#pop-dialog"), dd = new Date, show_key = "k_" + dd.getMonth() + dd.getDate();
+    if (!window.localStorage.getItem(show_key)) {
+        var startTime = $dialog.data("start") || 0, endTime = $dialog.data("end") || 0, nowTime = Date.now();
+        $dialog.show();
+        $("#pop-close").click(function () {
+            $dialog.hide();
+            window.localStorage.setItem(show_key, 1);
+        });
+    }
 }(window);
